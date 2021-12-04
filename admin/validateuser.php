@@ -1,5 +1,5 @@
 <?php session_start();
-
+print_r($_POST);die;
 $username=$_POST["txt_username"];
 $password=md5($_POST["txt_password"]);
 

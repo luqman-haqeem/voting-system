@@ -1,8 +1,6 @@
 <?php session_start();
-include "../connection.php";
 
-$username = mysqli_real_escape_string($db,$_POST["txt_username"]);
-// $username=$_POST["txt_username"];
+$username=$_POST["txt_username"];
 $password=md5($_POST["txt_password"]);
 
 // check if the text field are empty
@@ -11,6 +9,7 @@ if (empty($username)|| empty($password)) {
   exit();
 } 
 
+include "../connection.php";
 $query="SELECT * FROM admin WHERE username='$username' ";
 $qr=mysqli_query($db,$query);
 if($qr==false){
@@ -29,11 +28,7 @@ if (mysqli_num_rows($qr)==1) {
     $dbpassword=$record['password'];
     $userid=$record['id'];
     $userlevel=$record['user_level'];
-    echo "status:". $record['status'];
-
-    // check if student are register
-    if ($record['status']=="registed") {
-
+    
             //compare the passsword 
             if ($dbpassword==$password) {
                 // check user admin or voter
@@ -67,12 +62,6 @@ if (mysqli_num_rows($qr)==1) {
               header("Location: index.php?error=wrongpassword&username=$username");
               exit();   
             }
-    }
-    // return to login page if student are not register
-    elseif ($record['status']=='not register') {
-      header("Location: index.php?error=notregister");
-      exit();
-    }
 }
 else
   header("Location: index.php?error=usernotfound");

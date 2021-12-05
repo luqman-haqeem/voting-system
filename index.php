@@ -2,7 +2,8 @@
 if (isset($_POST['btn_login'])) {
   require 'connection.php';
 
-  $matricno=$_POST['txt_matricno'];
+  $matricno = mysqli_real_escape_string($db,$_POST['txt_matricno']);
+  // $matricno=$_POST['txt_matricno'];
   $qr=mysqli_query($db,"SELECT matric_no,voter_name FROM voter WHERE matric_no='$matricno' ");
   if (mysqli_error($db)==true) {
     echo "Failed to Fund Student<br>";

@@ -1,5 +1,8 @@
 <?php session_start();
-$username=$_POST["txt_username"];
+include "../connection.php";
+
+$username = mysqli_real_escape_string($db,$_POST["txt_username"]);
+// $username=$_POST["txt_username"];
 $password=md5($_POST["txt_password"]);
 
 // check if the text field are empty
@@ -8,7 +11,6 @@ if (empty($username)|| empty($password)) {
   exit();
 } 
 
-include "../connection.php";
 $query="SELECT * FROM login WHERE username='$username' ";
 $qr=mysqli_query($db,$query);
 if($qr==false){

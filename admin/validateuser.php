@@ -11,7 +11,7 @@ if (empty($username)|| empty($password)) {
   exit();
 } 
 
-$query="SELECT * FROM login WHERE username='$username' ";
+$query="SELECT * FROM admin WHERE username='$username' ";
 $qr=mysqli_query($db,$query);
 if($qr==false){
     echo "Failed to find user<br>";

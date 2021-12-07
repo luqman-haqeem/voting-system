@@ -220,7 +220,7 @@ include "include/header.template.php";
                         </div>
                         <div class="form-group">
                           <div class="col-md-4">
-                            <a href="#" class="btn btn-danger " data-toggle="modal" data-target="#Deletevotermodal"> <i class="fas fa-trash"></i></a>
+                            <a href="#" class="btn btn-danger " data-toggle="modal" data-target="#Deletevotermodal">Delete All Voter <i class="fas fa-trash"></i></a>
                             <!-- <button type="button" id="button" name="Clear" class="btn btn-danger button-loading" data-loading-text="Loading...">Clear Voter</button> -->
                             </div> 
                         </div>

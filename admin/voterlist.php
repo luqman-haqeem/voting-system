@@ -55,7 +55,7 @@ if ($qr==false) {
 //Check the record effected, if no records,
 //display a message
 if(mysqli_num_rows($qr)==0){
-echo ("No record fetched...<br>");
+// echo ("No record fetched...<br>");
 }//end no record
 
 

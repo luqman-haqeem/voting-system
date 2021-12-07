@@ -39,6 +39,29 @@
     </div>
   </div>
 
+    <!-- Delere All voter Modal-->
+    <div class="modal fade" id="Deletevotermodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete All Voter?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Delete all Voter</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <!-- <a class="btn btn-primary" href="deleteallvoter.php">Logout</a> -->
+          <form action="deleteallvoter.php">
+            <input type="hidden" name= "verify_request" id= "verify_request" value="12">
+            <input type="submit" class= "btn btn-danger" value="Delete">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <!-- launch election modal -->
    <div class="modal fade" id="launchelectionmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

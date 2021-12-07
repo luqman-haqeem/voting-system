@@ -216,7 +216,13 @@ include "include/header.template.php";
                         <div class="form-group">
                           <div class="col-md-4">
                                 <button type="submit" id="submit" name="Import" class="btn btn-primary button-loading" data-loading-text="Loading...">Import</button>
-                            </div>                          
+                            </div>     
+                            
+                          <div class="col-md-4">
+                                <a href="#" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#Deletevotermodal"> <i class="fas fa-trash"></i></a>
+
+                                <!-- <button type="button" id="button" name="Clear" class="btn btn-danger button-loading" data-loading-text="Loading...">Clear Voter</button> -->
+                            </div>                         
                         </div>
                 </form>
                 </div>

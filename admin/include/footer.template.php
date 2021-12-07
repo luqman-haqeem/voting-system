@@ -53,7 +53,7 @@
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
           <!-- <a class="btn btn-primary" href="deleteallvoter.php">Logout</a> -->
-          <form action="deleteallvoter.php">
+          <form action="deleteallvoter.php" method="POST">
             <input type="hidden" name= "verify_request" id= "verify_request" value="12">
             <input type="submit" class= "btn btn-danger" value="Delete">
           </form>

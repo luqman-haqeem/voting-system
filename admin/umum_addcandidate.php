@@ -11,7 +11,7 @@ if(empty($_SESSION['id'])){
     require "../connection.php";
       // get id value
       $voterid = $_GET['voterid'];
-
+      print_r($_GET);die;
       // to get voter information from database
       $sql="SELECT * from voter WHERE voter_id= '$voterid' ";
       $voterdetail=mysqli_query($db,$sql);

@@ -94,19 +94,25 @@ include "include/header.template.php";
                           <div class="col-md-6"><b>Voter Name</b></div>
                           <div class="col-md-2"><b>Faculty</b></div>
                           <div class="col-md-2"><b>Section</b></div>
+                          <div class="col-md-2"><b>Motto</b></div>
                         </div>
                         <div class="row">
                           <div class="col-md-2"><?=$rekod['matric_no']?></div>
                           <div class="col-md-6"><?=$rekod['voter_name']?></div>
                           <div class="col-md-2"><?=$rekod['name']?></div>
                           <div class="col-md-2">General</div>
+                          <form action="umum_addcandidate.php?>" method="GET">
+                          <div class="col-md-2"><input type="text" name="candidate_motto" id="candidate_motto" class="form-control"></div>
                         </div>
                       
                     </div>
                     </div>
                 <div class="modal-footer">
+                  <input type="hidden" name="voterid" value="<?=$voterid?>">
                 <button class="btn btn-danger" type="button" data-dismiss="modal">No</button>
-                <a class="btn btn-success" href="umum_addcandidate.php?voterid=<?=$voterid?>">Yes</a>
+                <input type="submit" value="Yes" class="btn btn-danger">
+                <!-- <a class="btn btn-success" href="umum_addcandidate.php?voterid=<?=$voterid?>">Yes</a> -->
+                </form>
                 </div>
             </div>
             </div>

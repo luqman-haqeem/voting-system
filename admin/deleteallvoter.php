@@ -1,6 +1,6 @@
 <?php 
 // check if variable is set in the url
-if (isset($_GET['verify_request'])) {
+if (isset($_POST['verify_request'])) {
     require '../connection.php';
     echo "delete all voter";die;
     // $voterid=$_GET['delete_voter_id'];
@@ -15,5 +15,5 @@ if (isset($_GET['verify_request'])) {
     // }
 }
 else
-  header('Location:voterlist.php');
+  header('Location:voterlist.php?error=not_allow ');
 ?>

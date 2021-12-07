@@ -119,6 +119,10 @@ include "include/header.template.php";
                 echo '<div class="alert alert-danger" role="alert">All the voter already added !</div>';
                 
               }
+              if ($_GET['error']=="not_allow") {
+                echo '<div class="alert alert-danger" role="alert">Not Allow To Delete !</div>';
+                
+              }
             }
            ?>
       <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">

@@ -91,14 +91,14 @@ include "include/header.template.php";
                     <div class="container-fluid">
                         <div class="row">
                           <div class="col-md-2"><b>Matric no</b></div>
-                          <div class="col-md-6"><b>Voter Name</b></div>
+                          <div class="col-md-4"><b>Voter Name</b></div>
                           <div class="col-md-2"><b>Faculty</b></div>
                           <div class="col-md-2"><b>Section</b></div>
                           <div class="col-md-2"><b>Motto</b></div>
                         </div>
                         <div class="row">
                           <div class="col-md-2"><?=$rekod['matric_no']?></div>
-                          <div class="col-md-6"><?=$rekod['voter_name']?></div>
+                          <div class="col-md-4"><?=$rekod['voter_name']?></div>
                           <div class="col-md-2"><?=$rekod['name']?></div>
                           <div class="col-md-2">General</div>
                           <form action="umum_addcandidate.php?>" method="GET">

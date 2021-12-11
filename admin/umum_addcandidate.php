@@ -8,7 +8,7 @@ print_r($_GET);
  // push candidate data to database
   // check if the 'voterid' variable is set in URL
   if (isset($_GET['voterid'])){
-
+    echo 'dd';
     require "../connection.php";
       // get id value
       $voterid = $_GET['voterid'];

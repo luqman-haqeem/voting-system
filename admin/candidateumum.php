@@ -63,7 +63,7 @@ include "include/header.template.php";
                     <td><?=$rekod['name']?></td>
                     <td><?=$rekod['section_name']?></td>
                     <td>
-                    <a href="updatecandidate.php?candidate_id=<?=$candidateid?>" class="btn btn-info btn-circle btn-sm"> <i class="fas fa-edit"></i></a>
+                    <a href="update_candidate.php?candidate_id=<?=$candidateid?>" class="btn btn-info btn-circle btn-sm"> <i class="fas fa-edit"></i></a>
                       <a href="#" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" 
                       data-target="#message<?=$candidateid?>"> <i class="fas fa-trash"></i></a>
                     </td>

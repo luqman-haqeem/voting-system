@@ -188,7 +188,7 @@ include "include/header.template.php";
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Import file (csv format only)</h6>
-                  <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Deletevotermodal">Delete All Voter <i class="fas fa-trash"></i></a>
+                  <a href="#" class=" p-1 btn btn-danger btn-sm" data-toggle="modal" data-target="#Deletevotermodal">Delete All Voter <i class="fas fa-trash"></i></a>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">

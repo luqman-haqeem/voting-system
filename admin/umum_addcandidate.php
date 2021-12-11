@@ -4,11 +4,11 @@ $electionid=$_SESSION['electionid'];
 if(empty($_SESSION['id'])){
  header("location:../index.php?error=notauthorised");
 }
-print_r($_GET);
+// print_r($_GET);
  // push candidate data to database
   // check if the 'voterid' variable is set in URL
   if (isset($_GET['voterid'])){
-    echo 'dd';
+    // echo 'dd';
     require "../connection.php";
       // get id value
       $voterid = $_GET['voterid'];

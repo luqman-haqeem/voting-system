@@ -82,7 +82,7 @@ include "include/header.template.php";
             <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add this voter as candidate? </h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add this voter as General candidate? </h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -93,27 +93,42 @@ include "include/header.template.php";
                           <div class="col-md-2"><b>Matric no</b></div>
                           <div class="col-md-4"><b>Voter Name</b></div>
                           <div class="col-md-2"><b>Faculty</b></div>
-                          <div class="col-md-2"><b>Section</b></div>
-                          <div class="col-md-2"><b>Motto</b></div>
                         </div>
                         <div class="row">
                           <div class="col-md-2"><?=$rekod['matric_no']?></div>
                           <div class="col-md-4"><?=$rekod['voter_name']?></div>
                           <div class="col-md-2"><?=$rekod['name']?></div>
-                          <div class="col-md-2">General</div>
-                          <form action="umum_addcandidate.php?>" method="GET">
-                          <div class="col-md-2"><input type="text" name="candidate_motto" id="candidate_motto" class="form-control"></div>
+                          
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6"><b>Candidate Motto</b></div>
+                        </div>
+                        <div class="row">
+                          <form action="umum_addcandidate.php" method="GET">
+                          <div class="col-md-6">
+                            <input type="text" name="candidate_motto" id="candidate_motto" class="form-control">
+                            <input type="hidden" name="voterid" id="voterid" value="<?=$voterid?>">
+                          </div>
+                          
                         </div>
                       
+                    </div>
+                    </div>
+                <div class="modal-footer">
+                <button class="btn btn-danger" type="button" data-dismiss="modal">No</button>
+                <input type="submit" value="Yes" class="btn btn-success">
+                <!-- <a class="btn btn-success" href="umum_addcandidate.php?voterid=<?=$voterid?>">Yes</a> -->
+                </form>
+                </div>
+<!--                       
                     </div>
                     </div>
                 <div class="modal-footer">
                   <input type="hidden" name="voterid" value="<?=$voterid?>">
                 <button class="btn btn-danger" type="button" data-dismiss="modal">No</button>
                 <input type="submit" value="Yes" class="btn btn-danger">
-                <!-- <a class="btn btn-success" href="umum_addcandidate.php?voterid=<?=$voterid?>">Yes</a> -->
                 </form>
-                </div>
+                </div> -->
             </div>
             </div>
         </div>

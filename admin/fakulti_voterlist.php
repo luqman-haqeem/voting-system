@@ -71,12 +71,12 @@ include "include/header.template.php";
               <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#message<?=$voterid?>"> <i class="fas fa-plus"></i></a>
             </td>
           </tr>
-          <!-- add fakulti candidate Modal-->
+         <!-- add fakulti candidate Modal-->
         <div class="modal fade bd-example-modal-lg" id="message<?=$voterid?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add this voter as candidate? </h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add this voter as Faculty candidate? </h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -87,47 +87,38 @@ include "include/header.template.php";
                           <div class="col-md-2"><b>Matric no</b></div>
                           <div class="col-md-6"><b>Voter Name</b></div>
                           <div class="col-md-2"><b>Faculty</b></div>
-                          <div class="col-md-2"><b>Section</b></div>
+                          <!-- <div class="col-md-2"><b>Section</b></div> -->
                         </div>
                         <div class="row">
                           <div class="col-md-2"><?=$rekod['matric_no']?></div>
                           <div class="col-md-6"><?=$rekod['voter_name']?></div>
                           <div class="col-md-2"><?=$rekod['name']?></div>
-                          <div class="col-md-2">Faculty</div>
+                          <!-- <div class="col-md-2">Faculty</div> -->
                         </div>
-                      
+                        <br>
+                        <div class="row">
+                          <div class="col-md-6"><b>Candidate Motto</b></div>
+                        </div>
+                        <div class="row">
+                          <form action="fakulti_addcandidate.php" method="GET">
+                          <div class="col-md-6">
+                            <input type="text" name="candidate_motto" id="candidate_motto" class="form-control">
+                            <input type="hidden" name="voterid" id="voterid" value="<?=$voterid?>">
+                          </div>
+                          
+                        </div>
                     </div>
                     </div>
                 <div class="modal-footer">
-                <button class="btn btn-danger" type="button" data-dismiss="modal">No</button>
-                <a class="btn btn-success" href="fakulti_addcandidate.php?voterid=<?=$voterid?>">Yes</a>
+                  <button class="btn btn-danger" type="button" data-dismiss="modal">No</button>
+                  <input type="submit" value="Yes" class="btn btn-success">
+                <!-- <a class="btn btn-success" href="fakulti_addcandidate.php?voterid=<?=$voterid?>">Yes</a> -->
+
+                </form>
                 </div>
             </div>
             </div>
         </div>
-        <?php
-        }//end of records
-      ?>
-        </tbody>
-        <tfoot>
-          <tr>
-            <th>Voter ID
-            </th>
-            <th>Name
-            </th>
-            <th>Matric No
-            </th>
-            <th>Faculty
-            </th>
-            <th >Action
-            </th>
-          </tr>
-        </tfoot>
-      </table>
-      
-    </div>
-  </div>
-</div>
 <?php
 include "include/footer.template.php";
 ?>	 

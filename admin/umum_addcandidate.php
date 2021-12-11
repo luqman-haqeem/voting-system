@@ -11,7 +11,8 @@ if(empty($_SESSION['id'])){
     require "../connection.php";
       // get id value
       $voterid = $_GET['voterid'];
-      print_r($_GET);die;
+      $candidate_motto = $_GET['candidate_motto'];
+      // print_r($_GET);die;
       // to get voter information from database
       $sql="SELECT * from voter WHERE voter_id= '$voterid' ";
       $voterdetail=mysqli_query($db,$sql);
@@ -26,7 +27,7 @@ if(empty($_SESSION['id'])){
       $voter_name =$rekod['voter_name'];
       $voter_faculty =$rekod['faculty'];
       // insert voter data into candidate table in DB
-      $sql="INSERT INTO candidate (voter_id,section_id,election_id) VALUES ('$voterid','0','$electionid')";
+      $sql="INSERT INTO candidate (voter_id,section_id,election_id,candidate_mottto) VALUES ('$voterid','0','$electionid','$candidate_motto')";
       $qr=mysqli_query($db,$sql);
 
       if ($qr==true){

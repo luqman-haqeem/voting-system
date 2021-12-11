@@ -4,6 +4,7 @@ $electionid=$_SESSION['electionid'];
 if(empty($_SESSION['id'])){
  header("location:../index.php?error=notauthorised");
 }
+print_r($_GET);
  // push candidate data to database
   // check if the 'voterid' variable is set in URL
   if (isset($_GET['voterid'])){
@@ -52,7 +53,7 @@ if(empty($_SESSION['id'])){
         // header("Location: candidateumum.php");
    }
    else
-    // do nothing
+   echo "voter id not exist";
 include "include/header.template.php";
 
 ?>

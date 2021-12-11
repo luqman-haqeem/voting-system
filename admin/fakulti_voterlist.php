@@ -116,15 +116,38 @@ include "include/header.template.php";
 
                 </form>
                 </div>
-            </div>
+                </div>
             </div>
         </div>
+        <?php
+        }//end of records
+      ?>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>Voter ID
+            </th>
+            <th>Name
+            </th>
+            <th>Matric No
+            </th>
+            <th>Faculty
+            </th>
+            <th >Action
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      
+    </div>
+  </div>
+</div>
 <?php
 include "include/footer.template.php";
-?>	 
+?>   
 
 <script>
-	$(document).ready(function () {
+  $(document).ready(function () {
 $('#dtBasicExample').DataTable();
 $('.dataTables_length').addClass('bs-select');
 });

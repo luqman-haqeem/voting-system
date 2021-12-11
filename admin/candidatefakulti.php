@@ -128,6 +128,21 @@ include "include/header.template.php";
         if ($_GET['success']=="addcandidate") {
             echo '<div class="alert alert-success" role="success">Succesfully add candidate !</div> ';
         }
+        if ($_GET['success']=="updated") {
+            echo '<div class="alert alert-success" role="alert">Candidate has been updated!</div>';
+          
+        }
+      }
+           
+      if (isset($_GET['error'])) {
+        if ($_GET['error']=="duplicate") {
+          echo '<div class="alert alert-danger" role="alert">All the Candidate already added !</div>';
+          
+        }
+        if ($_GET['error']=="not_allow") {
+          echo '<div class="alert alert-danger" role="alert">Not Allow To Delete !</div>';
+          
+        }
       }
        ?>
       <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
@@ -160,7 +175,7 @@ include "include/header.template.php";
             <td><?=$rekod['section_name']?></td>
 
             <td>
-            <a href="update_candidate.php?candidate_id=<?=$candidateid?>" class="btn btn-info btn-circle btn-sm"> <i class="fas fa-edit"></i></a>
+            <a href="update_candidate.php?type=2&candidate_id=<?=$candidateid?>" class="btn btn-info btn-circle btn-sm"> <i class="fas fa-edit"></i></a>
               <a href="#" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#message<?=$rekod['candidate_id']?>"> <i class="fas fa-trash"></i></a>
             </td>
           </tr>

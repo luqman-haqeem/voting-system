@@ -28,7 +28,7 @@ if(empty($_SESSION['id'])){
       $voter_name =$rekod['voter_name'];
       $voter_faculty =$rekod['faculty'];
       // insert voter data into candidate table in DB
-      $sql="INSERT INTO candidate (voter_id,section_id,election_id,candidate_mottto) VALUES ('$voterid','0','$electionid','$candidate_motto')";
+      $sql="INSERT INTO candidate (voter_id,section_id,election_id,candidate_motto) VALUES ('$voterid','0','$electionid','$candidate_motto')";
       $qr=mysqli_query($db,$sql);
 
       if ($qr==true){

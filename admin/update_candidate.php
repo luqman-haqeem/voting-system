@@ -9,25 +9,32 @@ if(empty($_SESSION['id'])){
 if (isset($_POST['btn_updatevoter'])) {
   $candidate_id=$_POST['candidate_id'];
   $motto=$_POST['candidate_motto'];
+  $candidate_type=$_POST['candidate_type'];
 
 $qr=mysqli_query($db,"UPDATE candidate SET candidate_motto ='$motto' WHERE candidate_id='$candidate_id' ");
+
 if ($qr==false) {
   echo "Failed to update candidate information<br>";
   echo "SQL error :".mysqli_error($db);
+  exit();
 }
 else
-header('Location:voterlist.php?success=updated');
+  if ($candidate_type == 1) {
+    header('Location:candidateumum.php?success=updated');
+  }else{
+    header('Location:candidatefakulti.php?success=updated');
+  }
 }
 // get election id from session 
 $electionid=$_SESSION['electionid'];
 
 $candidate_id=$_GET['candidate_id'];
-$query ="SELECT v.*,f.* FROM voter AS v
+$query ="SELECT v.*,f.*,c.candidate_motto FROM voter AS v
         JOIN candidate AS c
          ON v.voter_id =c.voter_id
          JOIN faculty AS f
          ON v.faculty =f.faculty_id
-         WHERE c.candidate_id'$candidate_id' ";
+         WHERE c.candidate_id = '$candidate_id' ";
 
 $qr=mysqli_query($db,$query);
 if ($qr==false) {
@@ -62,17 +69,25 @@ include "include/header.template.php";
                     <div align="left">
                      <!-- NAME textbox -->
                       <div class="form-group">
+                            <input type="hidden" name="candidate_type" id="candidate_type" value="1">
+
                           <label  for="title" >Candidate name</label>
                           <input name="candidate_name" type="text"  class="form-control" id="candidate_name" value="<?=$record['voter_name']?>" placeholder="Candidate Name" readonly>
                         </div>
-                      <div class="form-row">
-                        <!-- motto textbox -->
-                        <div class="form-group col-md-6">
-                          <label for="matric_no">Candidate Motto</label> 
-                          <input name="candidate_motto" type="text" class="form-control " id="candidate_motto" value="<?=$record['matric_no']?>" placeholder="Motto" >
+                      <div class="form-group">
+                          <label  for="title" >Candidate Motto </label>
+                          <input name="candidate_motto" type="text"  class="form-control" id="candidate_motto" value="<?=$record['candidate_motto']?>" placeholder="Candidate Motto" >
+                          <small>Max 50 Characters</small>
                         </div>
-                        
-                     </div>
+                            <input type="hidden" name="candidate_type" id="candidate_type" value="<?=$_GET['type']?>">
+                            <input type="hidden" name="candidate_id" id="candidate_id" value="<?=$_GET['candidate_id']?>">
+
+                      <!-- <div class="form-row">
+                        <div class="form-group">
+                          <label for="matric_no">Candidate Motto</label> 
+                          <input name="candidate_motto" type="text" class="form-control " id="candidate_motto" value="<?=$record['candidate_motto']?>" placeholder="Motto" >
+                        </div>
+                     </div> -->
                     </div>
                     <div align="right">
                       <div class="col-md-3" >

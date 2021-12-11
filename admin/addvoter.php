@@ -188,6 +188,7 @@ include "include/header.template.php";
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Import file (csv format only)</h6>
+                  <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Deletevotermodal">Delete All Voter <i class="fas fa-trash"></i></a>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -216,14 +217,14 @@ include "include/header.template.php";
                         <div class="form-group">
                           <div class="col-md-4">
                                 <button type="submit" id="submit" name="Import" class="btn btn-primary button-loading" data-loading-text="Loading...">Import</button>
+
                             </div>     
                         </div>
-                        <div class="form-group">
                           <div class="col-md-4">
-                            <a href="#" class="btn btn-danger " data-toggle="modal" data-target="#Deletevotermodal">Delete All Voter <i class="fas fa-trash"></i></a>
-                            <!-- <button type="button" id="button" name="Clear" class="btn btn-danger button-loading" data-loading-text="Loading...">Clear Voter</button> -->
-                            </div> 
+                            <a href="sample_file.csv">sample file</a>
+                            </div>     
                         </div>
+                        
                 </form>
                 </div>
               </div>

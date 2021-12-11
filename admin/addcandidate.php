@@ -34,8 +34,6 @@ include "include/header.template.php";
     <tr>
       <th class="th-sm">Voter ID
       </th>
-      <th class="th-sm">Email
-      </th>
       <th class="th-sm">Name
       </th>
       <th class="th-sm">Matric No
@@ -53,7 +51,6 @@ while ($rekod=mysqli_fetch_array($qr)){//redo to other records
 ?>
     <tr>
  <td><?=$rekod['voter_id']?></td>
- <td><?=$rekod['email']?></td>
  <td><?=$rekod['voter_name']?></td>
  <td><?=$rekod['matric_no']?></td>
  <td><?=$rekod['faculty']?></td>
@@ -68,8 +65,6 @@ while ($rekod=mysqli_fetch_array($qr)){//redo to other records
   <tfoot>
     <tr>
       <th>Voter ID
-      </th>
-      <th>Email
       </th>
       <th>Name
       </th>

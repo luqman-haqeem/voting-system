@@ -3,7 +3,7 @@ KUIS E-voting System
 this is my final year project 
 
 
-demo on : https://kuisevotingsystem.herokuapp.com/admin/voterlist.php
+demo on : https://kuisevotingsystem.herokuapp.com/index.php
 
 an online voting platform specifically design for student council election in KUIS
 

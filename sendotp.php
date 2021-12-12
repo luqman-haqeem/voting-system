@@ -1,4 +1,6 @@
 <?php session_start();
+error_reporting(E_ALL);
+ini_set('error_reporting', E_ALL);
   require 'connection.php';
   include 'systememail.php';
 	$matric_no=$_SESSION['matric_no'];

@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 require '../connection.php';
 
     // get election detail
@@ -46,7 +47,7 @@ if ($_SESSION['access_level'] != 1) {
     $record2=mysqli_fetch_array($qr);
     $totalcandidate=$record2[0];
 
-include "include/header.template.php";
+ include "include/header.template.php";
 ?>
 <div class="container-fluid">
 

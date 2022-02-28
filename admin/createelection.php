@@ -19,10 +19,10 @@ $plus5minute= date('Y-m-d H:i:s', strtotime('+5 minutes', strtotime($currenttime
 
 
 // check if there are active election
-// $check_activeelection=mysqli_query($db,"SELECT * FROM election WHERE status ='Running' ");
-// if(mysqli_num_rows($check_activeelection)>0){
-// header("Location: admindashboard.php?error=activeelection");
-// }
+$check_activeelection=mysqli_query($db,"SELECT * FROM election WHERE status ='Running' ");
+if(mysqli_num_rows($check_activeelection)>0){
+header("Location: admindashboard.php?error=activeelection");
+}
 // set election default name 
 $default_electionname="";
 
@@ -93,7 +93,7 @@ if (isset($_POST['btn_submit_createelection'])) {
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 

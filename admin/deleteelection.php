@@ -1,5 +1,6 @@
 <?php session_start();
-$electionid=$_GET['electionid'];
+
+$electionid = $_GET['election_id'];
 
 if (isset($_GET['election_id'])) {
   require '../connection.php';

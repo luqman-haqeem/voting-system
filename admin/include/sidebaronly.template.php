@@ -1,6 +1,16 @@
 <?php 
+
 $pagename=basename($_SERVER['PHP_SELF']);
 $current_page="active";
+
+$overview_active = " ";
+$setting_active = " ";
+$candidate_show = " ";
+$candidateumum_active = " ";
+$candidatefakulti_active = " ";
+$voter_active = " ";
+$launch_active = " ";
+$candidate_list_active = " ";
 
 if ($pagename=="adminoverview.php") {
     $overview_active=$current_page;
@@ -64,6 +74,7 @@ elseif ($pagename=="launchmenu.php") {
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item <?=$candidateumum_active?>" href="candidateumum.php">General</a>
             <a class="collapse-item <?=$candidatefakulti_active?>" href="candidatefakulti.php">Faculty</a>
+            <a class="collapse-item <?=$candidate_list_active?>" href="candidatefakulti.php">List candidate file</a>
           </div>
         </div>
       </li>

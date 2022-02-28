@@ -58,6 +58,9 @@ if (isset($_SESSION['matric_no'])) {
                       if ($_GET['error']=="wrongcode") {
                         alertwithclose("Your Verification is not match. Please Try again");
                       }
+					  else if ($_GET['error']=="somethingwrong") {
+                        alertwithclose("Something When Wrong. Please Try again");
+                      }
                     }
                 ?>
                   <form class="user" method="POST" action="<?=$_SERVER['PHP_SELF'];?>">
@@ -110,6 +113,7 @@ if (isset($_POST['btn_verify']) ) {
     }
     if (mysqli_num_rows($qr)>1) {
       echo "Something When wrong ";
+	  header('Location: index.php?error=somethingwrong');
       exit();
     }
     $record= mysqli_fetch_array($qr);

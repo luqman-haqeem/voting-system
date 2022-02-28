@@ -15,44 +15,53 @@ if(empty($_SESSION['id'])){
 // get data from url
 if (isset($_GET['data'])) {
   $sort_id=$_GET['data'];
-  $query="SELECT c.*,v.*,co.candidate_id,co.total_vote,ROUND(co.total_vote/(SELECT SUM(total_vote) from count WHERE section_id ='$sort_id') *100,2) AS percentage 
+  $section_name;
+  $query="SELECT c.*,v.*,co.candidate_id,co.total_vote,ROUND(co.total_vote/(SELECT SUM(total_vote) from count WHERE section_id ='$sort_id' AND election_id = $electionid) *100,2) AS percentage 
     FROM count  AS co 
     JOIN candidate AS c 
     ON co.candidate_id=c.candidate_id
     JOIN voter AS v
     ON c.voter_id=v.voter_id
     WHERE c.section_id ='$sort_id'
+    AND c.election_id = $electionid
     ORDER BY co.total_vote DESC";
       switch ($sort_id) {
     case '1':
       $fstm_status="active";
+      $section_name=" FSTM";
     break;
     case '2':
       $fsu_status="active";
+      $section_name=" FSU";
     break;
     case '3':
       $fpm_status="active";
+      $section_name=" FPM";
     break;
     case '4':
       $fppi_status="active";
+      $section_name=" FPPI";
     break;
     case '5':
       $fp_status="active";
+      $section_name=" FP";
     break;
   }
 }
 else{
   // umum results
   $all_status='active';
+      $section_name=" General";
   // variable for querry
 
-  $query="SELECT c.*,v.*,co.candidate_id,co.total_vote,ROUND(co.total_vote/(SELECT SUM(total_vote) from count WHERE section_id =0)*100,2) AS percentage 
+  $query="SELECT c.*,v.*,co.candidate_id,co.total_vote,ROUND(co.total_vote/(SELECT SUM(total_vote) from count WHERE section_id =0 AND election_id = $electionid)*100,2) AS percentage 
     FROM count  AS co 
     JOIN candidate AS c 
     ON co.candidate_id=c.candidate_id
     JOIN voter AS v
     ON c.voter_id=v.voter_id
-    WHERE c.section_id =0
+    WHERE c.section_id =0 
+	AND c.election_id = $electionid
     ORDER BY co.total_vote DESC";
     
 }
@@ -104,7 +113,13 @@ include "include/launchelectionheader.php";
             <div class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Result </h6>
+                  <div class="d-sm-flex align-items-center justify-content-between mb-1">
+                    <h6 class="m-0 font-weight-bold text-primary">Result <?=$section_name?></h6>
+                    <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
+                     <div class="pull-right">
+                      <button onclick="window.print()" class="d-none d-sm-inline-block btn btn-sm btn-primary d-print-none"><i class="fas fa-print"></i> Print Result</button>
+                    </div>
+                  </div>
                   
                 </div>
                 <div class="card-body">

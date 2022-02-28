@@ -136,10 +136,13 @@ include 'include/header_votingpage.php';
                         ?>
                       <tr>
                         <td ><?=$record['candidate_id']?></td>
-                        <td><?=$record['voter_name']?></td>
+                        <td><?=$record['voter_name']?>
+						<br>
+						- <?=$record['candidate_motto']?></td>
                         <td>
                           <div class="form-check">
                             <input name="umum_candidate_selected[]" class="form-check-input" type="checkbox" value="<?=$record['candidate_id']?>" >
+							
                           </div>
                         </td>
                       </tr>

@@ -42,7 +42,7 @@
                 <div class="p-5">
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Welcome To Kuis E-voting System!</h1>
-                    <h3 class="h6 text-gray-900 mb-4"> Adminstration Only</h3>
+                    <h3 class="h6 text-gray-900 mb-4"> Administration Only</h3>
 
 
                   </div>

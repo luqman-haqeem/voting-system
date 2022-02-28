@@ -1,4 +1,6 @@
-<?php session_start();
+<?php
+namespace MyProject;
+ session_start();
   require 'connection.php';
   include 'systememail.php';
 	$matric_no=$_SESSION['matric_no'];
@@ -14,7 +16,10 @@
 	$message=$template;
 	$email= $matric_no. "@student.kuis.edu.my";
 
-	require 'PHPMailerAutoload.php';
+	//require 'PHPMailerAutoload.php';
+	
+	use PHPMailer\PHPMailer\PHPMailer;
+	require 'vendor/autoload.php';
 
 	$mail = new PHPMailer;
 

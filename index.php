@@ -101,6 +101,8 @@ if (isset($_POST['btn_login'])) {
                           alertwithclose("You not authorised");
                       } elseif($_GET['error']=="failedtoresetpassword") {
                           alertwithclose("Failed to reset password, Please try again in few minute!");
+                      }else if ($_GET['error']=="somethingwrong") {
+                        alertwithclose("Something When Wrong. Please Try again");
                       }
                     } else if (isset($_GET['success'])) {
                         if ($_GET['success']=="checkemail") {
@@ -126,6 +128,10 @@ if (isset($_POST['btn_login'])) {
                   <hr>
                   <div class="text-center">
                     <a class="small" href="analysis.php">Voter Turnout</a>
+                  </div>
+				  
+				  <div class="text-center">
+                    <a class="small" href="candidate_list/">View candidate List </a>
                   </div>
 
                   <div class="text-center">

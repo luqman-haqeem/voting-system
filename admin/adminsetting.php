@@ -34,7 +34,7 @@
           header('Location: adminsetting.php?success=saved');
     }
     // if fakulti or umum save button is selected 
-    if (isset($_POST['btn_Umum_setting'])||isset($_POST['btn_Fstm_setting'])||isset($_POST['btn_Fsu_setting'])||isset($_POST['btn_Fpm_setting'])||isset($_POST['btn_Fppi_setting'])||isset($_POST['btn_Fp_setting'])) {
+    if (isset($_POST['btn_General_setting'])||isset($_POST['btn_Fstm_setting'])||isset($_POST['btn_Fsu_setting'])||isset($_POST['btn_Fpm_setting'])||isset($_POST['btn_Fppi_setting'])||isset($_POST['btn_Fp_setting'])) {
 
       $section_id=$_POST['section_id'];
       $max_candiate=$_POST['number_ofcandidate'];
@@ -197,7 +197,7 @@ include "include/header.template.php";
                 <a class="nav-link active " href="adminsetting.php">Election Setting</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="adminsetting.php?section=0">General section setting</a>
+                <a class="nav-link " href="adminsetting.php?section=0">General setting</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link " href="adminsetting.php?section=1">FSTM setting</a>

@@ -67,6 +67,7 @@ include 'include/header_votingpage.php'
                         <tr>
                           <th class="th-sm" >Candidate ID</th>
                           <th class="th-sm" >Candidate Name</th>
+						  <th class="th-sm" >Candidate Motto</th>
                         </tr>
                         <?php
                           // get umum candidate information from DB
@@ -83,10 +84,12 @@ include 'include/header_votingpage.php'
                             }
                             $record=mysqli_fetch_array($qr);
                             $name=$record['voter_name'];
+							$motto=$record['candidate_motto'];
                         ?> 
                         <tr>
                           <td><?=$candidate_id?></td>
                           <td><?=$name?></td>
+						  <td><?=$motto?></td>
                         </tr>
                         <!-- close loop -->
                         <?php } ?>
@@ -99,6 +102,7 @@ include 'include/header_votingpage.php'
                           <tr>
                             <th class="th-sm" >Candidate ID</th>
                             <th class="th-sm" >Candidate Name</th>
+							<th class="th-sm" >Candidate Motto</th>
                           </tr>
                           <?php
                             // get fakulti candidate information from DB
@@ -117,10 +121,12 @@ include 'include/header_votingpage.php'
                               }
                               $record=mysqli_fetch_array($qr);
                               $name=$record['voter_name'];
+							  $motto=$record['candidate_motto'];
                           ?> 
                           <tr>
                             <td><?=$candidate_id?></td>            
                             <td><?=$name?></td>
+							<td><?=$motto?></td>
                           </tr>
                           <!-- close loop -->
                           <?php }?>

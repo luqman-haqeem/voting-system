@@ -50,39 +50,40 @@ if (isset($_POST['btn_add_voter'])) {
         $file = fopen($filename, "r");
         // to skip the 1st row
         fgetcsv($file);
-          $duplicate=-10;
+          $duplicate=0;
           $voteradded=0;
-          $totalvoter=-10;
-          while (($getData = fgetcsv($file, 10000, ",")) !== FALSE){ 
-            switch ($getData[3]) {
+          $totalvoter=0;
+          while (($getData = fgetcsv($file, 10000, ",")) !== FALSE){
+//print_r($getData);die;
+            switch ($getData[2]) {
               case 'fstm':
-                $getData[3]="1";
+                $getData[2]="1";
                 break;
               case 'fsu':
-                $getData[3]="2";
+                $getData[2]="2";
                 break;
               case 'fpm':
-                $getData[3]="3";
+                $getData[2]="3";
                 break;
               case 'fppi':
-                $getData[3]="4";
+                $getData[2]="4";
                 break;
               case 'fp':
-                $getData[3]="5";
+                $getData[2]="5";
                 break;
               default:
-                $getData[3]="0";
+                $getData[2]="0";
                 break;
             }
             $totalvoter++;
             // check for existing voter and skip it
-            $existing_voter=mysqli_query($db,"SELECT matric_no FROM voter WHERE matric_no = '$getData[2]'");
+            $existing_voter=mysqli_query($db,"SELECT matric_no FROM voter WHERE matric_no = '$getData[1]'");
             if (mysqli_num_rows($existing_voter)>0) {
               $duplicate++;
               continue;
               }
             // insert voter information into DB
-            $sql = "INSERT into voter (voter_id,voter_name,matric_no,faculty)VALUES (NULL,'$getData[1]','$getData[2]','$getData[3]') ";
+            $sql = "INSERT into voter (voter_id,voter_name,matric_no,faculty)VALUES (NULL,'$getData[0]','$getData[1]','$getData[2]') ";
             $result = mysqli_query($db, $sql);
 
             if (mysqli_error($db)) {

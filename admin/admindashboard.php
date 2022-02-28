@@ -94,8 +94,8 @@ if (isset($_GET['data'])) {
                       <tr>
                         <th class="th-sm">Status</th>
                         <th class="th-sm">Title</th>
-                        <th class="th-sm">End Date</th>
                         <th class="th-sm">Start Date</th>
+                        <th class="th-sm">End Date</th>
                         <th class="th-sm">Action</th>
                       </tr>
                     </thead>

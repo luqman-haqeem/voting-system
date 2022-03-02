@@ -1,6 +1,7 @@
 <?php session_start();
+require 'connection.php';
+
 if (isset($_POST['btn_login'])) {
-  require 'connection.php';
 
   $matricno = mysqli_real_escape_string($db,$_POST['txt_matricno']);
   // $matricno=$_POST['txt_matricno'];
@@ -31,6 +32,16 @@ if (isset($_POST['btn_login'])) {
   $_SESSION['subject']=$subject;
 
   header('Location:sendotp.php');
+}
+// get latest file link
+$file_name_result=mysqli_query($db,"SELECT file_name FROM candidate_filename WHERE id =1 ");
+if (mysqli_error($db)) {
+  echo "Failed to get file link<br>";
+  echo "SQL error :".mysqli_error($db);
+  exit();
+}else{
+  $file_name=mysqli_fetch_array($file_name_result);
+  $file_link = "admin/uploads".$file_name['file_name'];
 }
  ?>
 <!DOCTYPE html>
@@ -131,7 +142,7 @@ if (isset($_POST['btn_login'])) {
                   </div>
 				  
 				  <div class="text-center">
-                    <a class="small" href="candidate_list/">View candidate List </a>
+                    <a class="small" href="<?=$file_link?>">View candidate List </a>
                   </div>
 
                   <div class="text-center">

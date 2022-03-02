@@ -1,7 +1,7 @@
-<?php 
+<?php
 
-$pagename=basename($_SERVER['PHP_SELF']);
-$current_page="active";
+$pagename = basename($_SERVER['PHP_SELF']);
+$current_page = "active";
 
 $overview_active = " ";
 $setting_active = " ";
@@ -12,90 +12,87 @@ $voter_active = " ";
 $launch_active = " ";
 $candidate_list_active = " ";
 
-if ($pagename=="adminoverview.php") {
-    $overview_active=$current_page;
+if ($pagename == "adminoverview.php") {
+  $overview_active = $current_page;
+} elseif ($pagename == "adminsetting.php") {
+  $setting_active = $current_page;
+} elseif ($pagename == "candidateumum.php" || $pagename == "umum_voterlist.php" || $pagename == "umum_confirmation.php") {
+  $candidate_show = "show";
+  $candidateumum_active = $current_page;
+} elseif ($pagename == "candidatefakulti.php" || $pagename == "fakulti_voterlist.php" || $pagename == "fakulti_confirmation.php") {
+  $candidate_show = "show";
+  $candidatefakulti_active = $current_page;
+} elseif ($pagename == "candidatelistfile.php") {
+  $candidate_show = "show";
+  $candidate_list_active = $current_page;
+} elseif ($pagename == "voterlist.php" || $pagename == "addvoter.php") {
+  $voter_active = $current_page;
+} elseif ($pagename == "launchmenu.php") {
+  $launch_active = $current_page;
 }
-elseif ($pagename=="adminsetting.php") {
-    $setting_active=$current_page;
-}
-elseif ($pagename=="candidateumum.php"|| $pagename=="umum_voterlist.php"|| $pagename=="umum_confirmation.php") {
-    $candidate_show="show";
-    $candidateumum_active=$current_page;
-    }
-elseif ($pagename=="candidatefakulti.php"|| $pagename=="fakulti_voterlist.php"|| $pagename=="fakulti_confirmation.php") {
-      $candidate_show="show";
-    $candidatefakulti_active=$current_page;
-    }
-elseif ($pagename=="voterlist.php" || $pagename=="addvoter.php") {
-    $voter_active=$current_page;
-    }
-elseif ($pagename=="launchmenu.php") {
-    $launch_active=$current_page;
-    
-    }
- ?>
-  <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+?>
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admindashboard.php">
+  <!-- Sidebar - Brand -->
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admindashboard.php">
 
-        <div class="sidebar-brand-text mx-3">KUIS E-voting Systems</div>
-      </a>
+    <div class="sidebar-brand-text mx-3">KUIS E-voting Systems</div>
+  </a>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0">
 
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item <?=$overview_active?>">
-        <a class="nav-link" href="adminoverview.php">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
+  <!-- Nav Item - Dashboard -->
+  <li class="nav-item <?= $overview_active ?>">
+    <a class="nav-link" href="adminoverview.php">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Dashboard</span></a>
+  </li>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider">
+  <!-- Divider -->
+  <hr class="sidebar-divider">
 
-      <!-- Setting item -->
-      <li class="nav-item <?=$setting_active?>">
-        <a class="nav-link " href="adminsetting.php" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-cog"></i>
-          <span>Settings</span>
-        </a> 
-      </li>
+  <!-- Setting item -->
+  <li class="nav-item <?= $setting_active ?>">
+    <a class="nav-link " href="adminsetting.php" aria-expanded="true" aria-controls="collapseTwo">
+      <i class="fas fa-cog"></i>
+      <span>Settings</span>
+    </a>
+  </li>
 
-      <!-- candidate dropdown -->
-      <li class="nav-item ">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCandidate" aria-expanded="true" aria-controls="collapseCandidate">
-          <i class="fas fa-user"></i>
-          <span>Candidate</span>
-        </a>
-        <div id="collapseCandidate" class="collapse <?=$candidate_show?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item <?=$candidateumum_active?>" href="candidateumum.php">General</a>
-            <a class="collapse-item <?=$candidatefakulti_active?>" href="candidatefakulti.php">Faculty</a>
-            <a class="collapse-item <?=$candidate_list_active?>" href="candidatefakulti.php">List candidate file</a>
-          </div>
-        </div>
-      </li>
+  <!-- candidate dropdown -->
+  <li class="nav-item ">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCandidate" aria-expanded="true" aria-controls="collapseCandidate">
+      <i class="fas fa-user"></i>
+      <span>Candidate</span>
+    </a>
+    <div id="collapseCandidate" class="collapse <?= $candidate_show ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <a class="collapse-item <?= $candidateumum_active ?>" href="candidateumum.php">General</a>
+        <a class="collapse-item <?= $candidatefakulti_active ?>" href="candidatefakulti.php">Faculty</a>
+        <a class="collapse-item <?= $candidate_list_active ?>" href="candidatelistfile.php">Candidate File</a>
+      </div>
+    </div>
+  </li>
 
-      <!-- Nav Item - Voter Menu -->
-      <li class="nav-item <?=$voter_active?>">
-        <a class="nav-link" href="voterlist.php"  aria-expanded="true" aria-controls="collapsePages">
-          <!-- Voter Icon -->
-          <i class="fas fa-user-friends" aria-hidden="true"></i>
-          <span>Voter</span>
-        </a>
-      </li>
+  <!-- Nav Item - Voter Menu -->
+  <li class="nav-item <?= $voter_active ?>">
+    <a class="nav-link" href="voterlist.php" aria-expanded="true" aria-controls="collapsePages">
+      <!-- Voter Icon -->
+      <i class="fas fa-user-friends" aria-hidden="true"></i>
+      <span>Voter</span>
+    </a>
+  </li>
 
-       <!-- Nav Item - Launch Menu -->
-      <li class="nav-item <?=$launch_active?>">
-        <a class="nav-link" href="launchmenu.php"  aria-expanded="true" aria-controls="collapsePages">
-          <!-- Launch Icon -->
-          <i class="fas fa-rocket"></i>
-          <span>Launch</span>
-        </a>
-      </li>
+  <!-- Nav Item - Launch Menu -->
+  <li class="nav-item <?= $launch_active ?>">
+    <a class="nav-link" href="launchmenu.php" aria-expanded="true" aria-controls="collapsePages">
+      <!-- Launch Icon -->
+      <i class="fas fa-rocket"></i>
+      <span>Launch</span>
+    </a>
+  </li>
 
-    </ul>
-    <!-- End of Sidebar -->
+</ul>
+<!-- End of Sidebar -->

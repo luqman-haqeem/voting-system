@@ -41,7 +41,7 @@ if (mysqli_error($db)) {
   exit();
 }else{
   $file_name=mysqli_fetch_array($file_name_result);
-  $file_link = "admin/uploads".$file_name['file_name'];
+  $file_link = "admin/".$file_name['file_name'];
 }
  ?>
 <!DOCTYPE html>
@@ -142,7 +142,7 @@ if (mysqli_error($db)) {
                   </div>
 				  
 				  <div class="text-center">
-                    <a class="small" href="<?=$file_link?>">View candidate List </a>
+                    <a class="small" href="<?=$file_link?>" target="_blank">View candidate List </a>
                   </div>
 
                   <div class="text-center">

@@ -32,9 +32,9 @@ namespace MyProject;
 	$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 	$mail->Port = 587;                                    // TCP port to connect to
 
-	$mail->setFrom($systememail, 'KUIS Voting system');
+	$mail->setFrom(SYSTEM_EMAIL, 'KUIS Voting system');
 	$mail->addAddress($email, $name);     // Add a recipient
-	$mail->addReplyTo($systememail, 'NO-REPLY');
+	$mail->addReplyTo(SYSTEM_EMAIL, 'NO-REPLY');
 
 	$mail->isHTML(true);                                  // Set email format to HTML
 

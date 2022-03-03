@@ -2,6 +2,9 @@ KUIS E-voting System
 
 this is my final year project 
 
+tech 
+1.core php 
+2.phpmailer
 
 demo on : https://kuisevotingsystem.herokuapp.com/index.php
 

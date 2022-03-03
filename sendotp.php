@@ -2,7 +2,6 @@
 namespace MyProject;
  session_start();
   require 'connection.php';
-  include 'systememail.php';
 	$matric_no=$_SESSION['matric_no'];
 	$name=$_SESSION['name'];
 	$subject=$_SESSION['subject'];
@@ -28,8 +27,8 @@ namespace MyProject;
 	$mail->isSMTP();                                      // Set mailer to use SMTP
 	$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 	$mail->SMTPAuth = true;                               // Enable SMTP authentication
-	$mail->Username = $systememail;                 // SMTP username
-	$mail->Password = $systempassword;                           // SMTP password
+	$mail->Username = SYSTEM_EMAIL;                 // SMTP username
+	$mail->Password = SYSTEM_EMAIL_PASSWORD;                           // SMTP password
 	$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 	$mail->Port = 587;                                    // TCP port to connect to
 

@@ -72,7 +72,7 @@ $query="SELECT c.*,v.*,s.*
         ON c.voter_id=v.voter_id 
         JOIN section as s
         ON c.section_id=s.section_id 
-        WHERE s.section_id='$voterfaculty' ";
+        WHERE s.section_id='$voterfaculty' AND election_id = $electionid ";
 $qr=mysqli_query($db,$query);
 if ($qr==false) {
     echo "Failed to get fakulti candidate information (Query failed)<br>";

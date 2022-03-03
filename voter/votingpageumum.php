@@ -84,7 +84,7 @@ $query="SELECT c.*,v.voter_name,v.matric_no,v.voter_id
 FROM candidate as c 
 JOIN voter as v 
 ON c.voter_id=v.voter_id
-WHERE c.section_id=0";
+WHERE c.section_id=0 AND election_id = $electionid ";
 
 $candidate_information=mysqli_query($db,$query);
 if ($candidate_information==false) {

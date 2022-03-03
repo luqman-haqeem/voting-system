@@ -5,6 +5,20 @@ $total =array();
 $colorscheme= array('#3cb44b','#e6194B');
 
 require 'connection.php';
+ // get election lastest running election
+ $sql = "SELECT election_id 
+ FROM election 
+ WHERE status = 'Running' 
+ ORDER BY created_at DESC 
+ LIMIT 1 ";
+$get_running_election = mysqli_query($db,$sql);
+if (mysqli_error($db)) {
+echo "FAILED to get running election: ".mysqli_error($db);
+exit();
+}
+$running_election_detail = mysqli_fetch_array($get_running_election);
+$election_id = $running_election_detail['election_id'];
+
 // get faculty id in URL
 if (isset($_GET['data'])) {
   $faculty=$_GET['data'];
@@ -32,13 +46,13 @@ if (isset($_GET['data'])) {
       break;
 
   }
-
+ 
   // get total alreadyvote by faculty
   $sql= "SELECT COUNT(v.voter_id) AS ttl,v.faculty 
          FROM alreadyvote as a 
          JOIN voter as v
          ON v.voter_id=a.voter_id
-         WHERE v.faculty='$faculty' ";
+         WHERE v.faculty='$faculty' AND a.election_id =  $election_id  ";
   $get_ttlAlreadyvote=mysqli_query($db,$sql);
   if (mysqli_error($db)) {
     echo "ERROR : ".mysqli_error($db);
@@ -47,11 +61,11 @@ if (isset($_GET['data'])) {
   // check total voter
   $sql="SELECT COUNT(voter_id) as ttl 
         FROM voter 
-        WHERE NOT EXISTS(SELECT voter_id FROM alreadyvote WHERE alreadyvote.voter_id=voter.voter_id) 
+        WHERE NOT EXISTS(SELECT voter_id FROM alreadyvote WHERE alreadyvote.voter_id=voter.voter_id AND election_id =  $election_id) 
         AND faculty='$faculty' ";
   $get_ttlVoter=mysqli_query($db,$sql);
   if (mysqli_error($db)) {
-    echo "Error".mysql_error($db);
+    echo "Error".mysqli_error($db);
     exit();
   }
 
@@ -61,7 +75,7 @@ else{
   $facultyname= "All Student";
     // get total alreadyvote
     $sql= "SELECT COUNT(voter_id)as ttl 
-           FROM alreadyvote";
+           FROM alreadyvote WHERE election_id =  $election_id ";
     $get_ttlAlreadyvote=mysqli_query($db,$sql);
     if (mysqli_error($db)) {
       echo "ERROR : ".mysqli_error($db);
@@ -70,10 +84,13 @@ else{
      // check total voter
     $sql="SELECT COUNT(voter_id) as ttl 
           FROM voter 
-          WHERE NOT EXISTS(SELECT voter_id FROM alreadyvote WHERE alreadyvote.voter_id=voter.voter_id)";
+          WHERE NOT EXISTS(
+            SELECT voter_id FROM alreadyvote 
+            WHERE alreadyvote.voter_id=voter.voter_id AND election_id =  $election_id  
+            )";
     $get_ttlVoter=mysqli_query($db,$sql);
     if (mysqli_error($db)) {
-      echo "Error".mysql_error($db);
+      echo "Error".mysqli_error($db);
       exit();
     }
 

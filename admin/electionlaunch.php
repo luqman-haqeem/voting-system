@@ -62,7 +62,7 @@ if(empty($_SESSION['id'])){
     $record=mysqli_fetch_array($qr);
     $totalvoter=$record[0];
     // get total candidate
-    $query="SELECT COUNT(*) FROM candidate";
+    $query="SELECT COUNT(*) FROM candidate WHERE election_id = $electionid ";
     $qr=mysqli_query($db,$query);
     if ($qr==false) {
         echo "Failed to get total candidate<br>";

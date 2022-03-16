@@ -50,37 +50,42 @@ if (isset($_POST["Import"])) {
       $duplicate = 0;
       $voteradded = 0;
       $totalvoter = 0;
-      while (($getData = fgetcsv($file, 10000, ",")) !== FALSE) {
-        //print_r($getData);die;
-        switch ($getData[2]) {
-          case 'fstm':
-            $getData[2] = "1";
+      while (($voter = fgetcsv($file, 10000, ",")) !== FALSE) {
+        $voter_name = mysqli_real_escape_string($db,$voter['0']);
+        $voter_matric_no = mysqli_real_escape_string($db,$voter['1']);
+        $voter_faculty = mysqli_real_escape_string($db,$voter['2']);
+
+        //print_r($voter);die;
+        switch (strtoupper($voter_faculty) ) {
+          case 'FSTM':
+            $voter_faculty_id = "1";
             break;
-          case 'fsu':
-            $getData[2] = "2";
+          case 'FSU':
+            $voter_faculty_id = "2";
             break;
-          case 'fpm':
-            $getData[2] = "3";
+          case 'FPM':
+            $voter_faculty_id = "3";
             break;
-          case 'fppi':
-            $getData[2] = "4";
+          case 'FPPI':
+            $voter_faculty_id = "4";
             break;
-          case 'fp':
-            $getData[2] = "5";
+          case 'FP':
+            $voter_faculty_id = "5";
             break;
           default:
-            $getData[2] = "0";
+            continue;
+            // $voter_faculty_id = "0";
             break;
         }
         $totalvoter++;
         // check for existing voter and skip it
-        $existing_voter = mysqli_query($db, "SELECT matric_no FROM voter WHERE matric_no = '$getData[1]'");
+        $existing_voter = mysqli_query($db, "SELECT matric_no FROM voter WHERE matric_no = '$voter_matric_no'");
         if (mysqli_num_rows($existing_voter) > 0) {
           $duplicate++;
           continue;
         }
         // insert voter information into DB
-        $sql = "INSERT into voter (voter_id,voter_name,matric_no,faculty)VALUES (NULL,'$getData[0]','$getData[1]','$getData[2]') ";
+        $sql = "INSERT into voter (voter_id,voter_name,matric_no,faculty)VALUES (NULL,'$voter_name','$voter_matric_no','$voter_faculty_id') ";
         $result = mysqli_query($db, $sql);
 
         if (mysqli_error($db)) {

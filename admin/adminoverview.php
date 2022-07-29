@@ -37,7 +37,11 @@ if ($_SESSION['access_level'] != 1) {
     $record=mysqli_fetch_array($qr);
     $totalvoter=$record[0];
     // get total candidate
-    $query="SELECT COUNT(*) FROM candidate WHERE election_id = '$electionid' ";
+    $query="SELECT COUNT(c.candidate_id) 
+    FROM candidate c
+    JOIN voter as v 
+    ON c.voter_id=v.voter_id
+    WHERE c.election_id = '$electionid' ";
 
     $qr=mysqli_query($db,$query);
     if ($qr==false) {
